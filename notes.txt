@@ -1,0 +1,3 @@
+./CellularAutomata/Scripts/activate
+python -m isort main.py
+streamlit run main.py
