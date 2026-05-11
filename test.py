@@ -4,13 +4,15 @@ import itertools
 import matplotlib
 
 GRID_SIZE = (10, 10)
+FT = [False, True]
 
 
-def add_new_row_to_matrix(m: np.ndarray, r: np.ndarray) -> np.ndarray:
-    m = np.vstack([m, r])
-    return m
+def build_rule(rule_number: int) -> dict:
+    assert rule_number < 2 ** (2**3)
+    x = itertools.product(FT, FT, FT)
+    y = bin(rule_number)[2:].zfill(8)
+    rule = {x: y == "1" for x, y in zip(x, y)}
+    return rule
 
 
-m = np.random.rand(5, GRID_SIZE[1]) > 0.5
-r = np.random.rand(1, GRID_SIZE[1]) > 0.5
-m = add_new_row_to_matrix(m, r)
+rule = build_rule(34)
