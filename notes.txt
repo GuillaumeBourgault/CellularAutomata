@@ -1,3 +1,5 @@
 ./CellularAutomata/Scripts/activate
 python -m isort main.py
 streamlit run main.py
+python -m cProfile -o profile.prof main.py
+snakeviz profile.prof

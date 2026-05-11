@@ -6,13 +6,9 @@ import matplotlib
 GRID_SIZE = (10, 10)
 FT = [False, True]
 
+m = np.random.rand(10, 10) > 0.5
+y, x = np.nonzero(m)
+plt.scatter(x, y, marker="s", s=1000)
+plt.gca().invert_yaxis()
 
-def build_rule(rule_number: int) -> dict:
-    assert rule_number < 2 ** (2**3)
-    x = itertools.product(FT, FT, FT)
-    y = bin(rule_number)[2:].zfill(8)
-    rule = {x: y == "1" for x, y in zip(x, y)}
-    return rule
-
-
-rule = build_rule(34)
+plt.show()
